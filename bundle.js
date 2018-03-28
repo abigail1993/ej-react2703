@@ -1,13 +1,17 @@
 (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
-"use strict";
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = require("react-dom");
+var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -17,40 +21,175 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* ejercicio de foto
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               import React from "react";
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               import ReactDOM from "react-dom";
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               class App extends React.Component {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 render(){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   return(<div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO2ewS0xpcxeIeqCgJ4DZdyJzs31Ub3M3sEQ3NX-373zKi6g_x" />
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <p>Abigail</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <p>25 años</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   )
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 }i
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ReactDOM.render(<App />, document.getElementById("container-react"))
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               /////////////////////
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               class App extends React.Component {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 constructor() {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   super(),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     this.state({time:Date.now() }),
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ComponentDidMoont(){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     setInterval()=> {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       this.setState({time:Date.now()});
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     },1000);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               render() {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 console.log("se pinta el reloj");
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 return (<div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     <p>la hora actual es:</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     <p>{ComponentDidMoont}</p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   </div>)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ReactDOM.render(<App />, document.getElementById("container-react"))
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
 
-var App = function (_React$Component) {
-  _inherits(App, _React$Component);
+//import { div, div, Progress } from 'reactstrap';
+//import Loading from '../components/subComponents/loading';
+//import ReactHtmlParser from 'react-html-parser';
 
-  function App() {
-    _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+var Success = function (_Component) {
+  _inherits(Success, _Component);
+
+  function Success(props) {
+    _classCallCheck(this, Success);
+
+    var _this = _possibleConstructorReturn(this, (Success.__proto__ || Object.getPrototypeOf(Success)).call(this, props));
+
+    _this.state = {
+      content: _this.props.data, // contenido del parent component
+      counter: 0, // valor que irá incrementando
+      intervalId: 0, // identificativo del intervalo
+      timer: 60 // 1 minuto que ira decreciendo
+    };
+    return _this;
   }
 
-  _createClass(App, [{
-    key: "render",
+  // Cuando el component se montó en el DOM
+
+
+  _createClass(Success, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      // asignar intervalo a variable para poder manipular más tarde
+      var intervalId = setInterval(this.setTimer.bind(this), 1000); // 1000 milisegundos === 1 segundo
+      // asignar variable a this.state
+      this.setState({ intervalId: intervalId });
+    }
+
+    // Cuando el component de desmonta del DOM
+
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      // evitar que el intervalo corra indefinidamente
+      clearInterval(this.state.intervalId);
+    }
+
+    // método que será llamado cada x segundos
+
+  }, {
+    key: 'setTimer',
+    value: function setTimer() {
+      this.setState({
+        counter: this.state.counter + 1.6666667, // 1.66667 para que 'value' y timer casen un poco
+        timer: this.state.timer - 1 // decrementar el tiempo por un segundo
+      });
+      // re-dirigir cuando los segundos se acaben
+      if (this.state.timer < 0) {
+        // not best solution
+        window.location = '/';
+      }
+    }
+
+    // si shouldComponentUpdate === true, el component ejecuta render() y actualiza el state
+
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      return nextState.counter > this.state.counter;
+    }
+  }, {
+    key: 'render',
     value: function render() {
+      // this.state.content.message === <h1>su mensaje ha sido enviado....</h1>
+      // this.state.content.progress === Será re-dirigido después de `${timer}`
+      var _state$content = this.state.content,
+          message = _state$content.message,
+          progress = _state$content.progress;
+      var _state = this.state,
+          timer = _state.timer,
+          counter = _state.counter;
+
+      if (!message) {
+        return _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(Loading, null)
+        );
+      }
       return _react2.default.createElement(
-        "div",
+        'div',
         null,
-        _react2.default.createElement("img", { src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO2ewS0xpcxeIeqCgJ4DZdyJzs31Ub3M3sEQ3NX-373zKi6g_x" }),
         _react2.default.createElement(
-          "p",
+          'div',
           null,
-          "Abigail"
-        ),
-        _react2.default.createElement(
-          "p",
-          null,
-          "25 a\xF1os"
+          '//',
+          ReactHtmlParser(message),
+          '// a\xF1adimos 0 a timer cuando es menor que 10 //',
+          ReactHtmlParser(message),
+          '//',
+          progress,
+          ' 0:',
+          timer < 10 ? '0' + timer : timer,
+          '// uso bootstrap pero sino ser\xEDa:',
+          _react2.default.createElement(
+            'progress',
+            { value: counter },
+            ' ',
+            Math.round(counter) + '%',
+            ' '
+          ),
+          '// Math.round( counter ) as\xED el valor de counter es m\xE1s claro y limpio',
+          _react2.default.createElement(
+            Progress,
+            { color: 'warning', value: counter },
+            ' ',
+            Math.round(counter) + '%',
+            ' '
+          )
         )
       );
     }
   }]);
 
-  return App;
-}(_react2.default.Component);
+  return Success;
+}(_react.Component);
+
+exports.default = Success;
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById("container-react"));
 
