@@ -42,3 +42,44 @@ render() {
 
 ReactDOM.render(<App />, document.getElementById("container-react"))
 */
+
+import React from "react"
+import ReactDOM from "react-dom"
+
+class App extends React.Component{
+  constructor(){
+    super()
+    this.state = {progress: 0}
+
+}
+  componentDidMount(){
+    setInterval(()=>{
+      if(this.state.progress <100){
+        this.setState({progress:this.state.progress+=10})
+      }
+      else{
+        clearInterval(intervalId)
+      }
+    },100)
+  }
+
+  render(){
+   let styleContainer = {
+     border:"1px solid black",
+     height: "30px"
+   }
+   let styleBAr= {
+     backgroundColor: "green",
+     width:(this.state.progress)+"%",
+     height:"inherit",
+     content:" "
+   }
+    render(
+      <div style={styleContainer } >
+        <div style={styleBAr }></div>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById("container-react"))

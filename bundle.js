@@ -1,17 +1,13 @@
 (function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = require('react-dom');
+var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -66,130 +62,65 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ReactDOM.render(<App />, document.getElementById("container-react"))
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
 
-//import { div, div, Progress } from 'reactstrap';
-//import Loading from '../components/subComponents/loading';
-//import ReactHtmlParser from 'react-html-parser';
+var App = function (_React$Component) {
+  _inherits(App, _React$Component);
 
+  function App() {
+    _classCallCheck(this, App);
 
-var Success = function (_Component) {
-  _inherits(Success, _Component);
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
-  function Success(props) {
-    _classCallCheck(this, Success);
+    _this.state = { progress: 0 };
 
-    var _this = _possibleConstructorReturn(this, (Success.__proto__ || Object.getPrototypeOf(Success)).call(this, props));
-
-    _this.state = {
-      content: _this.props.data, // contenido del parent component
-      counter: 0, // valor que irá incrementando
-      intervalId: 0, // identificativo del intervalo
-      timer: 60 // 1 minuto que ira decreciendo
-    };
     return _this;
   }
 
-  // Cuando el component se montó en el DOM
-
-
-  _createClass(Success, [{
-    key: 'componentDidMount',
+  _createClass(App, [{
+    key: "componentDidMount",
     value: function componentDidMount() {
-      // asignar intervalo a variable para poder manipular más tarde
-      var intervalId = setInterval(this.setTimer.bind(this), 1000); // 1000 milisegundos === 1 segundo
-      // asignar variable a this.state
-      this.setState({ intervalId: intervalId });
+      var _this2 = this;
+
+      setInterval(function () {
+        if (_this2.state.progress < 100) {
+          _this2.setState({ progress: _this2.state.progress += 10 });
+        } else {
+          clearInterval(intervalId);
+        }
+      }, 100);
     }
-
-    // Cuando el component de desmonta del DOM
-
   }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      // evitar que el intervalo corra indefinidamente
-      clearInterval(this.state.intervalId);
-    }
-
-    // método que será llamado cada x segundos
-
-  }, {
-    key: 'setTimer',
-    value: function setTimer() {
-      this.setState({
-        counter: this.state.counter + 1.6666667, // 1.66667 para que 'value' y timer casen un poco
-        timer: this.state.timer - 1 // decrementar el tiempo por un segundo
-      });
-      // re-dirigir cuando los segundos se acaben
-      if (this.state.timer < 0) {
-        // not best solution
-        window.location = '/';
+    key: "render",
+    value: function (_render) {
+      function render() {
+        return _render.apply(this, arguments);
       }
-    }
 
-    // si shouldComponentUpdate === true, el component ejecuta render() y actualiza el state
+      render.toString = function () {
+        return _render.toString();
+      };
 
-  }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      return nextState.counter > this.state.counter;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      // this.state.content.message === <h1>su mensaje ha sido enviado....</h1>
-      // this.state.content.progress === Será re-dirigido después de `${timer}`
-      var _state$content = this.state.content,
-          message = _state$content.message,
-          progress = _state$content.progress;
-      var _state = this.state,
-          timer = _state.timer,
-          counter = _state.counter;
-
-      if (!message) {
-        return _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(Loading, null)
-        );
-      }
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'div',
-          null,
-          '//',
-          ReactHtmlParser(message),
-          '// a\xF1adimos 0 a timer cuando es menor que 10 //',
-          ReactHtmlParser(message),
-          '//',
-          progress,
-          ' 0:',
-          timer < 10 ? '0' + timer : timer,
-          '// uso bootstrap pero sino ser\xEDa:',
-          _react2.default.createElement(
-            'progress',
-            { value: counter },
-            ' ',
-            Math.round(counter) + '%',
-            ' '
-          ),
-          '// Math.round( counter ) as\xED el valor de counter es m\xE1s claro y limpio',
-          _react2.default.createElement(
-            Progress,
-            { color: 'warning', value: counter },
-            ' ',
-            Math.round(counter) + '%',
-            ' '
-          )
-        )
-      );
-    }
+      return render;
+    }(function () {
+      var styleContainer = {
+        border: "1px solid black",
+        height: "30px"
+      };
+      var styleBAr = {
+        backgroundColor: "green",
+        width: this.state.progress + "%",
+        height: "inherit",
+        content: " "
+      };
+      render(_react2.default.createElement(
+        "div",
+        { style: styleContainer },
+        _react2.default.createElement("div", { style: styleBAr })
+      ));
+    })
   }]);
 
-  return Success;
-}(_react.Component);
-
-exports.default = Success;
+  return App;
+}(_react2.default.Component);
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById("container-react"));
 
